@@ -15,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connexionString);
 });
 
+builder.Services.AddScoped<EmailSender>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles(); // enable static file to share files 
 
 app.UseHttpsRedirection();
 

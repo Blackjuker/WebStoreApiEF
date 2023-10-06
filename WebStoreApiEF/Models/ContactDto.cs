@@ -2,20 +2,19 @@
 
 namespace WebStoreApiEF.Models
 {
-    public class Contact
+    public class ContactDto
     {
-        public int Id { get; set; }
-        [MaxLength(100)]
+        [Required,MaxLength(100)]
         public string FirstName { get; set; } = "";
-        [MaxLength(100)]
+        [Required,MaxLength(100)]
         public string LastName { get; set; } = "";
-        [MaxLength(100)]
+        [Required,MaxLength(100),EmailAddress]
         public string Email { get; set; } = "";
         [MaxLength(100)]
-        public string Phone { get; set; } = "";
+        public string? Phone { get; set; } = "";
         
-        public required Subject Subject { get; set; }
+        public int SubjectId { get; set; }
+        [Required,MinLength(20),MaxLength(4000)]
         public string Message { get; set; } = "";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }
