@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -170,6 +171,8 @@ namespace WebStoreApiEF.Controllers
             return Ok(product);
         }
 
+
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult CreateProduct([FromForm]ProductDto productDto)
         {
@@ -213,6 +216,7 @@ namespace WebStoreApiEF.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public IActionResult UpdateProduct(int id,[FromForm]ProductDto productDto)
         {
@@ -265,6 +269,7 @@ namespace WebStoreApiEF.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
