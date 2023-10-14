@@ -12,8 +12,8 @@ using WebStoreApiEF.Services;
 namespace WebStoreApiEF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231006100016_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20231008114152_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,9 +72,11 @@ namespace WebStoreApiEF.Migrations
 
             modelBuilder.Entity("WebStoreApiEF.Models.Product", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Brand")
                         .IsRequired()
