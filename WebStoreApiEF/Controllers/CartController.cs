@@ -21,6 +21,7 @@ namespace WebStoreApiEF.Controllers
         public IActionResult GetPaymentMethods()
         {
             return Ok(OrderHelper.PaymentMethods);
+            //bOnjour
         }
 
         [HttpGet]
